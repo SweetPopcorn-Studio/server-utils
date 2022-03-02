@@ -1,7 +1,10 @@
 # server-utils :rocket:
 
+## Limitations 
+Note this is only for debian 10
+
 ## Usage 
-This repo is a list of helpful scripts to setup a server faster
+This repo is a list of helpful scripts to setup a server faster 
 
 ## server-setup 
 This script installs the following tools
