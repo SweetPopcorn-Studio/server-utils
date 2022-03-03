@@ -5,21 +5,26 @@ set -o nounset
 
 IFS=$(printf '\n\t')
 
-# GIT
+# GIT & CURL
 sudo apt update
 sudo apt install git
 printf '\nGIT installed successfully\n\n'
 
 # Necessary Tools 
 sudo apt-get install software-properties-common
-sudo apt-get install -y gnupg2
 
 # Docker
 sudo apt remove --yes docker docker-engine docker.io containerd runc || true
 sudo apt update
-sudo apt --yes --no-install-recommends install apt-transport-https ca-certificates
-wget --quiet --output-document=- https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt --yes --no-install-recommends install docker-ce docker-ce-cli containerd.io
 sudo usermod --append --groups docker "$USER"
@@ -30,7 +35,7 @@ printf 'Waiting for Docker to start...\n\n'
 sleep 5
 
 # Docker Compose
-sudo wget "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sleep 1
 docker-compose --version
