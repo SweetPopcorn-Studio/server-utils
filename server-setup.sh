@@ -7,16 +7,16 @@ IFS=$(printf '\n\t')
 
 # GIT & CURL
 sudo apt update
-sudo apt install git
+sudo apt --yes  install git
 printf '\nGIT installed successfully\n\n'
 
 # Necessary Tools 
-sudo apt-get install software-properties-common
+sudo apt-get -y install software-properties-common
 
 # Docker
 sudo apt remove --yes docker docker-engine docker.io containerd runc || true
 sudo apt update
-sudo apt-get install \
+sudo apt-get --yes install \
     ca-certificates \
     curl \
     gnupg \
@@ -43,6 +43,6 @@ printf '\nDocker Compose installed successfully\n\n'
 
 # Certbot
 sudo apt update
-sudo apt install python3-acme python3-certbot python3-mock python3-openssl python3-pkg-resources python3-pyparsing python3-zope.interface
-sudo apt install python3-certbot-nginx
+sudo apt --yes install python3-acme python3-certbot python3-mock python3-openssl python3-pkg-resources python3-pyparsing python3-zope.interface
+sudo apt --yes install python3-certbot-nginx
 printf '\Certbot installed successfully\n\n'
