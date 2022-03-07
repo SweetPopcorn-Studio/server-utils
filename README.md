@@ -19,10 +19,10 @@ This script installs the following tools
 
 ### Nginx Config
 `
-server { \n
-  server_name CHANGEME.COM \n
-  location / { \n
-    proxy_pass  http://127.0.0.1:7777; \n
-  } \n
-}\n
+server { <br/>
+  server_name CHANGEME.COM <br/>
+  location / { <br/>
+    proxy_pass  http://127.0.0.1:7777; <br/>
+  } <br/>
+} <br/>
 `
