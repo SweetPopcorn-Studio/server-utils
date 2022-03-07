@@ -18,11 +18,11 @@ This script installs the following tools
 * sudo ./server-setup.sh
 
 ### Nginx Config
-`
-server { <br/>
-  server_name CHANGEME.COM <br/>
+```
+server {
+  server_name CHANGEME.COM
   location / { <br/>
-    proxy_pass  http://127.0.0.1:7777; <br/>
-  } <br/>
-} <br/>
-`
+    proxy_pass  http://127.0.0.1:7777;
+  }
+}
+```
