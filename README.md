@@ -17,3 +17,12 @@ This script installs the following tools
 * chmod u+x server-setup.sh
 * sudo ./server-setup.sh
 
+### Nginx Config
+`
+server {
+  server_name CHANGEME.COM
+  location / {
+    proxy_pass  http://127.0.0.1:7777;
+  }
+}
+`
