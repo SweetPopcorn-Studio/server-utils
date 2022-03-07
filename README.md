@@ -33,15 +33,6 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_buffering off;
     }
-
-  # Cache Ghost css and js 
-    location ~* \.(?:css|js) {
-        expires           max;
-        add_header        Cache-Control public;
-        proxy_pass        http://127.0.0.1:7777/$uri; #CHANGE
-        access_log        off;
-    }
-
 }
 
 ```
