@@ -26,3 +26,15 @@ server {
   }
 }
 ```
+
+### Restart Nginx 
+```
+sudo systemctl reload nginx
+
+```
+
+### SSL Certbot 
+```
+sudo certbot --nginx -d CHANGEME.COM
+```
+
