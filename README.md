@@ -20,7 +20,7 @@ This script installs the following tools
 ### Nginx Config
 ```
 server {
-  server_name CHANGEME.COM
+  server_name <CHANGEME.COM>;
   location / {
     proxy_pass  http://127.0.0.1:7777;
   }
@@ -35,6 +35,6 @@ sudo systemctl reload nginx
 
 ### SSL Certbot 
 ```
-sudo certbot --nginx -d CHANGEME.COM
+sudo certbot --nginx -d <CHANGEME.COM>
 ```
 
