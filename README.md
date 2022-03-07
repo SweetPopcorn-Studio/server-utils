@@ -20,10 +20,18 @@ This script installs the following tools
 ### Nginx Config
 ```
 server {
-  server_name <CHANGEME.COM>;
-  location / {
-    proxy_pass  http://127.0.0.1:7777;
-  }
+    listen 0.0.0.0:80;
+    server_name <CHANGEME.COM>;
+    access_log /var/log/nginx/*your-domain-name*.log;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header HOST $http_host;
+        proxy_set_header X-NginX-Proxy true;
+
+        proxy_pass http://127.0.0.1:2368;
+        proxy_redirect off;
+    }
 }
 ```
 
