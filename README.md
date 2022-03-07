@@ -21,7 +21,7 @@ This script installs the following tools
 ```
 server {
   server_name CHANGEME.COM
-  location / { <br/>
+  location / {
     proxy_pass  http://127.0.0.1:7777;
   }
 }
