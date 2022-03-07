@@ -18,19 +18,20 @@ This script installs the following tools
 * sudo ./server-setup.sh
 
 ### Nginx Config
+
 ```
 server {
     listen 0.0.0.0:80;
     server_name <CHANGEME.COM>; #CHANGE
-    access_log /var/log/nginx/<CHANGEME.COM>.log; #CHANGE
+    access_log /var/log/nginx/<CHANGEME.COM>;  #CHANGE
 
     location / {
+        proxy_pass http://127.0.0.1:7777;  #CHANGE
+        proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header HOST $http_host;
-        proxy_set_header X-NginX-Proxy true;
-
-        proxy_pass http://127.0.0.1:7777; #CHANGE
-        proxy_redirect off;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_buffering off;
     }
     
    location ~ "/assets/images/(.*)-([a-z0-9]{10})\.(?:png|jpe?g|tiff)(.*)$" {
@@ -48,8 +49,11 @@ server {
         proxy_pass        http://127.0.0.1:7777/$uri; #CHANGE
         access_log        off;
   }
+
 }
+
 ```
+
 
 ### Restart Nginx 
 ```
