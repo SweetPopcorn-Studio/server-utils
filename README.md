@@ -11,6 +11,8 @@ This script installs the following tools
 * Git
 * Docker
 * docker-compose 
+* nginx 
+* certbot
 
 ### How to use Server-Setup? :raising_hand:
 * clone this repo 
