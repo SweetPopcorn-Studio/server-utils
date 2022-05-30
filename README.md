@@ -18,6 +18,7 @@ This script installs the following tools
 * clone this repo 
 * chmod u+x server-setup.sh
 * sudo ./server-setup.sh
+* sudo certbot --nginx
 
 ### Nginx Config
 
